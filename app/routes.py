@@ -23,16 +23,14 @@ def index():
         return render_template('index.html', title="Blogz", users=users)
 
 @app.route('/post')
-@login_required
 def post():
-    user = current_user
-    id = request.args.get('id')
-    post = Post.query.filter_by(id=id)
+    pid = request.args.get('post')
+    post = Post.query.filter_by(id=pid).first()
+    user = User.query.filter_by(post.user_id).first()
     return render_template('post.html', title='View one post', user=user, post=post)
 
 @app.route('/allposts')
-@login_required
-def explore():
+def displayposts():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
