@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>All Users.</h1>
+    <ul>
+    {% if users|len == 1 %}
+        <li>{% include '_singleUser.html' %}</li>
+    {% else%}
+        {% for user in users %}
+            <li>{% include '_singleUser.html' %}</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+
+{% endblock %}
