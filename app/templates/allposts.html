@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>All Posts!</h1>
-    {% if posts|len == 1 %}
+    {% if posts|length == 1 %}
         <p>{% include '_singlepost.html' %}</p>
     {% else %}
         {% for post in posts %}

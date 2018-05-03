@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Hi, {{ user.username }}</h1>
-    {% if posts|len == 1 %}
+    <h1>Blog posts for: {{ user.username }}</h1>
+    {% if posts|length == 1 %}
         <p>{% include '_singlepost.html' %}</p>
     {% else %}
         {% for post in posts %}

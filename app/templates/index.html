@@ -4,13 +4,9 @@
 
     <h1>All Users.</h1>
     <ul>
-    {% if users|len == 1 %}
-        <li>{% include '_singleUser.html' %}</li>
-    {% else%}
-        {% for user in users %}
-            <li>{% include '_singleUser.html' %}</li>
-        {% endfor %}
-    {% endif %}
+    {% for user in users %}
+        <li><a href="/user?user_id={{user.id}}">{{ user.username }}</a></li>
+    {% endfor %}
     </ul>
 
 {% endblock %}
