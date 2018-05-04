@@ -101,7 +101,8 @@ def newpost():
 
 @app.route('/user')
 def user():
-    user = User.query.filter_by(id=request.args.get('user_id')).first()
+    search_id = request.args.get('user_id')
+    user = User.query.filter_by(id=search_id).first()
     users = User.query.all()
-    posts = Post.query.all()
+    posts = Post.query.filter_by(user_id=search_id).all()
     return render_template('singleUser.html', posts=posts, user=user, users=users)
