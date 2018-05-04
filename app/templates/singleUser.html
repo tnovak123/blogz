@@ -2,11 +2,7 @@
 
 {% block content %}
     <h1>Blog posts for: {{ user.username }}</h1>
-    {% if posts|length == 1 %}
+    {% for post in posts %}
         <p>{% include '_singlepost.html' %}</p>
-    {% else %}
-        {% for post in posts %}
-            <p>{% include '_singlepost.html' %}</p>
-        {% endfor %}
-    {% endif %}
+    {% endfor %}
 {% endblock %}
